@@ -6,7 +6,7 @@ import (
 )
 
 type TestingT interface {
-	Error(format string, args ...interface{})
+	Error(args ...interface{})
 	Errorf(format string, args ...interface{})
 	Fail()
 	FailNow()
@@ -22,7 +22,7 @@ type TestingT interface {
 	Skipped() bool
 }
 
-type merf struct {}
+type merf struct{}
 
 func T() TestingT {
 	return merf{}
@@ -30,7 +30,7 @@ func T() TestingT {
 
 func (m merf) Error(args ...interface{}) {
 	m.Log(args)
-	ginkgo.Fail()
+	ginkgo.Fail("failed")
 }
 
 func (m merf) Errorf(format string, args ...interface{}) {
@@ -66,7 +66,7 @@ func (m merf) Log(args ...interface{}) {
 }
 
 func (m merf) Logf(format string, args ...interface{}) {
-	prinln(fmt.Sprintf(format, args...))
+	println(fmt.Sprintf(format, args...))
 }
 
 func (m merf) Parallel() {
