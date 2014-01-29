@@ -16,6 +16,19 @@ Enter [ginkgo-convert](https://github.com/tjarratt/ginkgo-convert), a cli tool t
 
 Features
 --------
+* implements `Error`
 * implements `Errorf`
+* implements `Fail`
+* implements `FailNow`
+* implements `Failed`
+* implements `Fatal`
+* implements `Fatalf`
+* implements `Log`
+* implements `Logf`
+* implements `Parallel`
+* implements `Skip`
+* implements `Skipf`
+* implements `SkipNow`
+* implements `Skipped`
 
 If there is a testing.T method that you'd like implemented, I will gladly accept PRs, or issues for functionality.
