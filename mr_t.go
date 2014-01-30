@@ -1,4 +1,4 @@
-package merf
+package mr_t
 
 import (
 	"fmt"
@@ -22,70 +22,70 @@ type TestingT interface {
 	Skipped() bool
 }
 
-type merf struct{}
+type mrT struct{}
 
 func T() TestingT {
-	return merf{}
+	return mrT{}
 }
 
-func (m merf) Error(args ...interface{}) {
+func (m mrT) Error(args ...interface{}) {
 	m.Log(args)
 	ginkgo.Fail("failed")
 }
 
-func (m merf) Errorf(format string, args ...interface{}) {
+func (m mrT) Errorf(format string, args ...interface{}) {
 	ginkgo.Fail(fmt.Sprintf(format, args...))
 }
 
-func (m merf) Fail() {
+func (m mrT) Fail() {
 	ginkgo.Fail("failed")
 }
 
-func (m merf) FailNow() {
+func (m mrT) FailNow() {
 	ginkgo.Fail("failed")
 }
 
-func (m merf) Failed() bool {
+func (m mrT) Failed() bool {
 	return false
 }
 
-func (m merf) Fatal(args ...interface{}) {
+func (m mrT) Fatal(args ...interface{}) {
 	m.Log(args)
 	m.FailNow()
 }
 
-func (m merf) Fatalf(format string, args ...interface{}) {
+func (m mrT) Fatalf(format string, args ...interface{}) {
 	m.Logf(format, args...)
 	m.FailNow()
 }
 
-func (m merf) Log(args ...interface{}) {
+func (m mrT) Log(args ...interface{}) {
 	for _, log := range args {
 		println(log)
 	}
 }
 
-func (m merf) Logf(format string, args ...interface{}) {
+func (m mrT) Logf(format string, args ...interface{}) {
 	println(fmt.Sprintf(format, args...))
 }
 
-func (m merf) Parallel() {
+func (m mrT) Parallel() {
 	return
 }
 
-func (m merf) Skip(args ...interface{}) {
+func (m mrT) Skip(args ...interface{}) {
 	m.Log(args...)
 }
 
-func (m merf) Skipf(format string, args ...interface{}) {
+func (m mrT) Skipf(format string, args ...interface{}) {
 	m.Logf(format, args...)
 }
 
-func (m merf) SkipNow(args ...interface{}) {
+func (m mrT) SkipNow(args ...interface{}) {
 	m.Log(args...)
 	return
 }
 
-func (m merf) Skipped() bool {
+func (m mrT) Skipped() bool {
 	return false
 }
